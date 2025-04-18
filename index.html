@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Trade Entry Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      padding: 30px;
+    }
+    .container {
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      max-width: 400px;
+      margin: auto;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 16px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #007bff;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+    .result div {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Trade Entry Calculator</h2>
+    <input type="number" id="high" placeholder="Previous Day High">
+    <input type="number" id="low" placeholder="Previous Day Low">
+    <button onclick="calculate()">Calculate</button>
+
+    <div class="result" id="resultBox" style="display: none;">
+      <div><strong>Entry Price:</strong> <span id="entry"></span></div>
+      <div><strong>Stop Loss:</strong> <span id="sl"></span></div>
+      <div><strong>Target:</strong> <span id="target"></span></div>
+      <div><strong>Quantity:</strong> <span id="qty"></span></div>
+    </div>
+  </div>
+
+  <script>
+    function calculate() {
+      const high = parseFloat(document.getElementById('high').value);
+      const low = parseFloat(document.getElementById('low').value);
+
+      if (isNaN(high) || isNaN(low)) {
+        alert("Please enter both High and Low values.");
+        return;
+      }
+
+      const entry = ((high + low) / 2).toFixed(2);
+      const sl = (Previous day Low).tofixed(2);
+      const target = (Previous day High).toFixed(2);
+
+      const riskPerTrade = 100 ;
+      const qty = Math.floor(riskPerTrade / (entry - sl));
+
+      document.getElementById('entry').textContent = entry;
+      document.getElementById('sl').textContent = sl;
+      document.getElementById('target').textContent = target;
+      document.getElementById('qty').textContent = qty;
+
+      document.getElementById('resultBox').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
